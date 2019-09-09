@@ -1,0 +1,21 @@
+server:
+  port: 4900
+
+
+spring:
+  application:
+    name: eureka-service
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    service-url:
+      defaultZone: http://${spring.application.name}:${server.port}/eureka/
+    fetch-registry: false
+    register-with-eureka: false
+    healthcheck:
+      enabled: false
+  server:
+#    关闭自我保护防止实例无法被服务中心剔除 防止无法调到实例
+    enable-self-preservation: false
